@@ -5,9 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   for (let i = 0; i < featureLinkElems.length; i++) {
     featureLinkElems[i].addEventListener('click', () => {
-      featureLinkElems[i].classList.toggle('feature__link_active');
-      featureSubElems[i].classList.toggle('hidden');
-    });
-  }
+      if (featureLinkElems[i].classList.contains('feature__link_active')) {
+        featureLinkElems[i].classList.toggle('feature__link_active');
+        featureSubElems[i].classList.toggle('hidden');
+      } else {
+        featureSubElems.forEach((featureSubElem) => {
+          featureSubElem.classList.add('hidden');
+        });
+        featureLinkElems.forEach((featureLinkElem) => {
+          featureLinkElem.classList.remove('feature__link_active')
+        })
+        featureLinkElems[i].classList.add('feature__link_active');
+        featureSubElems[i].classList.remove('hidden');
+      }
+    })
+  };
 });
-
