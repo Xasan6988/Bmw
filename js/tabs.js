@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       tabsTitles.forEach(item => {
-          if (item.dataset.title === elem.dataset.tabsHandler) {
+          if (item.dataset.title !== elem.dataset.tabsHandler) {
             item.classList.add('hidden');
           } else {
             item.classList.remove('hidden');
