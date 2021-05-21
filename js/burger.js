@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.body.addEventListener('click', e => {
     const target = e.target;
-    if (!target.classList.contains('menu') && !target.classList.contains('humburger-menu')) {
+    if (!target.classList.contains('menu') && !target.classList.contains('humburger-menu') && target.closest('.menu') === null) {
+      closeMenu();
+    } else if (target.classList.contains('menu-list__link')) {
       closeMenu();
     }
   });
