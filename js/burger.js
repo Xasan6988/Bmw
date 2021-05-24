@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+export default function burger() {
   const menuElem = document.querySelector('.menu');
   const humburgerElem = document.querySelector('.humburger-menu');
 
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     humburgerElem.classList.remove('humburger-menu-active');
   }
 
+
   humburgerElem.addEventListener('click', toggleMenu);
 
   document.body.addEventListener('click', e => {
@@ -20,4 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
       closeMenu();
     }
   });
-});
+}

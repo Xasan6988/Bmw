@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+export default function tabs() {
   const tabsHandlerElems = document.querySelectorAll('[data-tabs-handler]');
   const tabsFieldElems = document.querySelectorAll('[data-tabs-field]');
   const tabsTitles = document.querySelectorAll('.design__title');
@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       tabsTitles.forEach(item => {
-          if (item.dataset.title !== elem.dataset.tabsHandler) {
-            item.classList.add('hidden');
-          } else {
-            item.classList.remove('hidden');
-          }
+        if (item.dataset.title !== elem.dataset.tabsHandler) {
+          item.classList.add('hidden');
+        } else {
+          item.classList.remove('hidden');
+        }
       });
     });
-  };
-});
+  }
+}

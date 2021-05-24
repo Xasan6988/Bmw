@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const smothScrollElems = document.querySelectorAll('a[href^="#"]:not(a[href="#"])');
+function smoothScroll() {
+	const smothScrollElems = document.querySelectorAll('a[href^="#"]:not(a[href="#"])');
 
   for (let elem of smothScrollElems) {
     elem.addEventListener('click', function(event) {
@@ -11,4 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
   }
-})
+}
+
+export default smoothScroll;

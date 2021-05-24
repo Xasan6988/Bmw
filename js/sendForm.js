@@ -18,52 +18,59 @@ const sendData = (data, callBack, falseCallBack) => {
   request.send(data);
 };
 
-
-const formElems = document.querySelectorAll('.form');
-
 const formHandler = (form) => {
+  const smallElem = document.createElement('small');
+  form.append(smallElem);
+  let flag = true;
+  const btnSubmit = document.querySelector('.button[type="submit"]');
+
   form.addEventListener('submit', e => {
     e.preventDefault();
     const data = {};
 
-    for (let {name, value} of form.elements) {
+    for (let elem of form.elements) {
+      const {
+        name,
+        value
+      } = elem;
       if (name) {
-        data[name] = value;
+        if (value.trim()) {
+          data[name] = value.trim();
+          flag = true;
+          elem.style.border = 'none';
+        } else {
+          elem.style.border = '1px solid red';
+          flag = false;
+          elem.value = '';
+        }
       }
     }
 
-    const smallElem = document.createElement('small');
+    if (!flag) {
+      return smallElem.textContent = 'Заполните все поля';
+    }
 
     sendData(JSON.stringify(data),
-    (id) => {
-      smallElem.innerHTML = 'Ваша заявка №' + id + '! <br>В ближайшее время с вами свяжемся!';
-      smallElem.style.color = 'green';
-      form.append(smallElem);
-      for (let elem of form.elements) {
-        if (elem.type === 'submit') {
-          elem.disabled = true;
-        }
-      };
-      setTimeout(() => {
-        form.removeChild(smallElem);
-        for (let elem of form.elements) {
-          if (elem.type === 'submit') {
-            elem.disabled = false;
-          }
-        };
-      }, 5000);
-    },
-    (err) => {
-      smallElem.innerHTML = 'Ошибка: ' + err;
-      smallElem.style.color = 'red';
-      form.append(smallElem);
-    });
+      (id) => {
+        smallElem.innerHTML = 'Ваша заявка №' + id + '! <br>В ближайшее время с вами свяжемся!';
+        smallElem.style.color = 'green';
+        btnSubmit.disabled = true;
+        setTimeout(() => {
+          smallElem.textContent = '';
+          btnSubmit.disabled = false;
+        }, 5000);
+      },
+      (err) => {
+        smallElem.innerHTML = 'Ошибка: ' + err;
+        smallElem.style.color = 'red';
+      });
 
     form.reset();
   })
 };
 
-formElems.forEach(formHandler);
+export default function sendForm() {
+  const formElems = document.querySelectorAll('.form');
 
-
-
+  formElems.forEach(formHandler);
+}

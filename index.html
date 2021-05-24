@@ -12,13 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="styles/style.min.css">
 
-  <script src="js/blockScrolled.js" defer></script>
-  <script src="js/accordion.js" defer></script>
-  <script src="js/smothScroll.js" defer></script>
-  <script src="js/tabs.js" defer></script>
-  <script src="js/modal.js" defer></script>
-  <script src="js/burger.js" defer></script>
-  <script src="js/sendForm.js" defer></script>
+  <script src="js/index.js" type="module"></script>
 
 </head>
 <body>
@@ -401,9 +395,9 @@
             удобное для вас время
           </p>
           <form class="form form-test-drive">
-            <input type="text" class="input" name="name" placeholder="Имя" required>
-            <input type="mail" class="input" name="mail" placeholder="Электронная почта" required>
-            <input type="text" class="input" name="phone" placeholder="Телефон" required>
+            <input type="text" class="input" name="name" placeholder="Имя">
+            <input type="mail" class="input" name="mail" placeholder="Электронная почта">
+            <input type="text" class="input" name="phone" placeholder="Телефон">
             <button type="submit" class="button form__button">
               Отправить
             </button>
@@ -432,8 +426,8 @@
       <button type="button" class="modal__close" aria-label="закрыть модальное окно">
       </button>
       <form class="form modal__form">
-        <input type="text" name="name" class="input modal__input" placeholder="Имя" required>
-        <input type="mail" name="mail" class="input modal__input" placeholder="Электронная почта" required>
+        <input type="text" name="name" class="input modal__input" placeholder="Имя">
+        <input type="mail" name="mail" class="input modal__input" placeholder="Электронная почта">
         <div class="modal-buttons">
           <button type="submit" class="button modal__button">
             Отправить

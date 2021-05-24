@@ -1,6 +1,10 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const moreElems = document.querySelectorAll('.more');
+import blockScrolled from './blockScrolled.js';
+
+const {disableScroll, enableScroll} = blockScrolled;
+
+export default function modal() {
   const modalElem = document.querySelector('.modal');
+  const moreElems = document.querySelectorAll('.more');
 
   const openModal = () => {
     modalElem.classList.remove('hidden');
@@ -22,4 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
     }
   });
-});
+
+}
